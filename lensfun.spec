@@ -14,6 +14,8 @@ URL: http://lensfun.berlios.de/
 Source0: %{name}-%{version}.tar.bz2
 BuildRequires: python
 BuildRequires: glib2-devel
+BuildRequires: libpng-devel
+BuildRequires: zlib-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
