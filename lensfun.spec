@@ -12,6 +12,8 @@ URL: http://lensfun.berlios.de/
 Source0: http://download.berlios.de/lensfun/%{name}-%{version}.tar.bz2
 # (fc) 0.2.3-1mdv fix linking
 Patch0: lensfun-0.2.3-fixlinking.patch
+# (fc) 0.2.3-1mdv fix build on 64bits
+Patch1: lensfun-0.2.3-64bits.patch
 BuildRequires: python
 BuildRequires: glib2-devel
 BuildRequires: libpng-devel
@@ -71,6 +73,7 @@ This package contains the header files and .so libraries for developing %{name}.
 
 %setup -q 
 %patch0 -p1 -b .fixlinking
+%patch1 -p1 -b .64bits
 
 %build
 # We can't use macro configure
