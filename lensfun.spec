@@ -1,17 +1,17 @@
-%define _disable_ld_as_needed 1
-
 %define lib_major 0
 %define lib_name %mklibname lensfun %{lib_major}
 %define lib_dev %mklibname lensfun -d
 
 Name: lensfun
-Version: 0.2.2b
+Version: 0.2.3
 Summary: A library to rectifying the defects introduced by your photographic equipment
 Release: %mkrel 1
 License: GPLv3
 Group: System/Libraries
 URL: http://lensfun.berlios.de/
-Source0: %{name}-%{version}.tar.bz2
+Source0: http://download.berlios.de/lensfun/%{name}-%{version}.tar.bz2
+# (fc) 0.2.3-1mdv fix linking
+Patch0: lensfun-0.2.3-fixlinking.patch
 BuildRequires: python
 BuildRequires: glib2-devel
 BuildRequires: libpng-devel
@@ -70,6 +70,7 @@ This package contains the header files and .so libraries for developing %{name}.
 %prep
 
 %setup -q 
+%patch0 -p1 -b .fixlinking
 
 %build
 # We can't use macro configure
@@ -83,7 +84,7 @@ This package contains the header files and .so libraries for developing %{name}.
 
 %install
 rm -rf %{buildroot}
-%makeinstall_std
+%makeinstall
 
 %clean
 rm -rf %{buildroot}
