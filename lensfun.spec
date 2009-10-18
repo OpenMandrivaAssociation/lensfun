@@ -3,7 +3,7 @@
 %define lib_dev %mklibname lensfun -d
 
 Name: lensfun
-Version: 0.2.3
+Version: 0.2.4
 Summary: A library to rectifying the defects introduced by your photographic equipment
 Release: %mkrel 1
 License: GPLv3
@@ -37,14 +37,6 @@ Requires: %{name}
 
 %description -n	%{lib_name}
 A library to rectifying the defects introduced by your photographic equipment.
-
-%if %mdkversion < 200900
-%post -n %{lib_name} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{lib_name} -p /sbin/ldconfig
-%endif
 
 %files -n %{lib_name}
 %defattr(-,root,root,-)
