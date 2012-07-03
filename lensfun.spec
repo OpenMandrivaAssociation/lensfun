@@ -16,6 +16,7 @@ BuildRequires:	python
 BuildRequires:	glib2-devel
 BuildRequires:	libpng-devel
 BuildRequires:	zlib-devel
+BuildRequires:	cmake
 Patch0:		lensfun-0.2.6-cmake_LIB_SUFFIX.patch
 Patch2:		lensfun-0.2.6-cmake_pkgconfig.patch
 
