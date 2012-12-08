@@ -17,7 +17,7 @@ diff -up lensfun-0.2.6/libs/lensfun/lensfun.pc.cmake.cmake_pkgconfig lensfun-0.2
 +prefix=@CMAKE_INSTALL_PREFIX@
 +bindir=@CMAKE_INSTALL_PREFIX@/@BINDIR@
 +libdir=@CMAKE_INSTALL_PREFIX@/@LIBDIR@
-+includedir=@CMAKE_INSTALL_PREFIX@/@INCLUDEDIR@
++includedir=@CMAKE_INSTALL_PREFIX@/@INCLUDEDIR@/lensfun
 +datadir=@CMAKE_INSTALL_PREFIX@/@DATADIR@
 +docdir=@CMAKE_INSTALL_PREFIX@/@DOCDIR@
 +
