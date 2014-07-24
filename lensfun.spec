@@ -4,16 +4,14 @@
 
 Summary:	A library to rectifying the defects introduced by your photographic equipment
 Name:		lensfun
-Version:	0.2.6
-Release:	12
+Version:	0.2.8
+Release:	1
 License:	GPLv3
 Group:		System/Libraries
-Url:		http://lensfun.berlios.de/
-Source0:	http://download.berlios.de/lensfun/%{name}-%{version}.tar.bz2
-# (fc) 0.2.3-1mdv fix build on 64bits
-Patch0:		lensfun-0.2.6-cmake_LIB_SUFFIX.patch
+Url:		http://lensfun.sourceforge.net/
+Source0:	http://downloads.sourceforge.net/project/%{name}/%{version}/%{name}-%{version}.tar.bz2
+Patch0:		lensfun-0.2.8-x32.patch
 Patch1:		lensfun-0.2.3-64bits.patch
-Patch2:		lensfun-0.2.6-cmake_pkgconfig.patch
 
 BuildRequires:	cmake
 BuildRequires:	doxygen
@@ -48,6 +46,9 @@ libraries for developing %{name}.
 %apply_patches
 
 %build
+# failed with clang
+# need investigation
+export CC=gcc
 %cmake \
 	-DBUILD_DOC:BOOL=ON \
 	-DBUILD_TESTS:BOOL=OFF
