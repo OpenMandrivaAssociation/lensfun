@@ -60,6 +60,10 @@ libraries for developing %{name}.
 # export CC=gcc
 %cmake \
 	-DBUILD_DOC:BOOL=ON \
+%ifarch %armx
+	-BUILD_FOR_SSE2=OFF \
+	-BUILD_FOR_SSE=OFF \
+%endif
 	-DBUILD_AUXFUN=ON \
 	-DBUILD_TESTS:BOOL=OFF
 
