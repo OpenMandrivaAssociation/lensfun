@@ -1,0 +1,11 @@
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index 4318ece..7e8271b 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -36,5 +36,5 @@ INSTALL(FILES
+     ${CMAKE_CURRENT_BINARY_DIR}/g-lensfun-update-data.1 
+     ${CMAKE_CURRENT_BINARY_DIR}/lensfun-update-data.1 
+     ${CMAKE_CURRENT_BINARY_DIR}/lensfun-add-adapter.1 
+-    DESTINATION ${CMAKE_INSTALL_PREFIX}/man/man1
++    DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/man1
+ )

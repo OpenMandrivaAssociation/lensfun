@@ -1,17 +1,17 @@
 %define major	0
 %define libname %mklibname lensfun %{major}
+%define libaux %mklibname auxfun %{major}
 %define devname %mklibname lensfun -d
 
 Summary:	A library to rectifying the defects introduced by your photographic equipment
 Name:		lensfun
-Version:	0.2.8
+Version:	0.3.0
 Release:	1
 License:	GPLv3
 Group:		System/Libraries
 Url:		http://lensfun.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/project/%{name}/%{version}/%{name}-%{version}.tar.bz2
-Patch0:		lensfun-0.2.8-x32.patch
-Patch1:		lensfun-0.2.3-64bits.patch
+Patch0:		man-path-0.3.0.patch
 
 BuildRequires:	cmake
 BuildRequires:	doxygen
@@ -31,10 +31,19 @@ Requires:	%{name} = %{version}-%{release}
 %description -n	%{libname}
 A library to rectifying the defects introduced by your photographic equipment.
 
+%package -n	%{libaux}
+Summary:	A library to rectifying the defects introduced by your photographic equipment
+Group:		System/Libraries
+Requires:	%{libname} = %{version}-%{release}
+
+%description -n	%{libaux}
+A library to rectifying the defects introduced by your photographic equipment.
+
 %package -n	%{devname}
 Summary:	Development tools for programs which will use the %{name}
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
+Requires:	%{libaux} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n	%{devname}
@@ -48,9 +57,10 @@ libraries for developing %{name}.
 %build
 # failed with clang
 # need investigation
-export CC=gcc
+# export CC=gcc
 %cmake \
 	-DBUILD_DOC:BOOL=ON \
+	-DBUILD_AUXFUN=ON \
 	-DBUILD_TESTS:BOOL=OFF
 
 %make all
@@ -61,14 +71,21 @@ make install/fast DESTDIR=%{buildroot} -C build
 cp -r  docs/*.txt %{buildroot}%{_datadir}/doc/%{name}/
 
 %files
-%{_datadir}/lensfun
 %doc %{_docdir}/*
+%{_datadir}/lensfun
+%{_bindir}/g-lensfun-update-data
+%{_bindir}/lensfun-add-adapter
+%{_bindir}/lensfun-update-data
+%{_mandir}/man1/*.*
 
 %files -n %{libname}
 %{_libdir}/liblensfun.so.%{major}*
 
+%files -n %{libaux}
+%{_libdir}/libauxfun.so.%{major}*
+
 %files -n %{devname}
 %{_includedir}/%{name}/*.h*
+%{_includedir}/auxfun/*.h*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/lensfun.pc
-
