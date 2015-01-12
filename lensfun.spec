@@ -60,6 +60,7 @@ libraries for developing %{name}.
 # need investigation
 %ifarch %ix86
 export CC=gcc
+export CXX=g++
 %endif
 
 %cmake \
