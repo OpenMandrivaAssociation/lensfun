@@ -6,7 +6,7 @@
 Summary:	A library to rectifying the defects introduced by your photographic equipment
 Name:		lensfun
 Version:	0.3.0
-Release:	2
+Release:	3
 License:	GPLv3
 Group:		System/Libraries
 Url:		http://lensfun.sourceforge.net/
@@ -16,6 +16,7 @@ Patch0:		man-path-0.3.0.patch
 BuildRequires:	cmake
 BuildRequires:	doxygen
 BuildRequires:	python
+BuildRequires:	python-docutils
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(zlib)
@@ -57,7 +58,10 @@ libraries for developing %{name}.
 %build
 # failed with clang
 # need investigation
-# export CC=gcc
+%ifarch %ix86
+export CC=gcc
+%endif
+
 %cmake \
 	-DBUILD_DOC:BOOL=ON \
 %ifarch %armx
