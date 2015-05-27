@@ -1,6 +1,5 @@
 %define major 0
 %define libname %mklibname lensfun %{major}
-%define libaux %mklibname auxfun %{major}
 %define devname %mklibname lensfun -d
 
 Summary:	A library to rectifying the defects introduced by your photographic equipment
@@ -28,23 +27,15 @@ A library to rectifying the defects introduced by your photographic equipment.
 Summary:	A library to rectifying the defects introduced by your photographic equipment
 Group:		System/Libraries
 Requires:	%{name} = %{version}-%{release}
+Obsoletes:	%{mklibname auxfun 0} < 0.3.1
 
 %description -n	%{libname}
-A library to rectifying the defects introduced by your photographic equipment.
-
-%package -n	%{libaux}
-Summary:	A library to rectifying the defects introduced by your photographic equipment
-Group:		System/Libraries
-Requires:	%{libname} = %{version}-%{release}
-
-%description -n	%{libaux}
 A library to rectifying the defects introduced by your photographic equipment.
 
 %package -n	%{devname}
 Summary:	Development tools for programs which will use the %{name}
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
-Requires:	%{libaux} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n	%{devname}
@@ -65,6 +56,7 @@ libraries for developing %{name}.
 
 %cmake \
 	-DBUILD_DOC:BOOL=ON \
+    -DCMAKE_BUILD_TYPE:STRING=Release \
 %ifarch %armx
 	-BUILD_FOR_SSE2=OFF \
 	-BUILD_FOR_SSE=OFF \
@@ -90,11 +82,7 @@ cp -r  docs/*.txt %{buildroot}%{_datadir}/doc/%{name}/
 %files -n %{libname}
 %{_libdir}/liblensfun.so.%{major}*
 
-%files -n %{libaux}
-%{_libdir}/libauxfun.so.%{major}*
-
 %files -n %{devname}
 %{_includedir}/%{name}/*.h*
-%{_includedir}/auxfun/*.h*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/lensfun.pc
