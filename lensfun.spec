@@ -1,16 +1,16 @@
-%define major	0
+%define major 0
 %define libname %mklibname lensfun %{major}
 %define libaux %mklibname auxfun %{major}
 %define devname %mklibname lensfun -d
 
 Summary:	A library to rectifying the defects introduced by your photographic equipment
 Name:		lensfun
-Version:	0.3.0
-Release:	3
+Version:	0.3.1
+Release:	1
 License:	GPLv3
 Group:		System/Libraries
 Url:		http://lensfun.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/project/%{name}/%{version}/%{name}-%{version}.tar.bz2
+Source0:	http://downloads.sourceforge.net/project/%{name}/%{version}/%{name}-%{version}.tar.gz
 Patch0:		man-path-0.3.0.patch
 
 BuildRequires:	cmake
@@ -59,8 +59,8 @@ libraries for developing %{name}.
 # failed with clang
 # need investigation
 %ifarch %ix86
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 %endif
 
 %cmake \
