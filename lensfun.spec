@@ -61,6 +61,14 @@ libraries for developing %{name}.
 	-BUILD_FOR_SSE2=OFF \
 	-BUILD_FOR_SSE=OFF \
 %endif
+%ifarch %{i586} x86_64
+	-DBUILD_FOR_SSE:BOOL=ON \
+    -DBUILD_FOR_SSE2:BOOL=OFF \
+%endif
+%ifarch x86_64
+	-DBUILD_FOR_SSE:BOOL=ON \
+	-DBUILD_FOR_SSE2:BOOL=ON \
+%endif
 	-DBUILD_AUXFUN=ON \
 	-DBUILD_TESTS:BOOL=OFF
 
