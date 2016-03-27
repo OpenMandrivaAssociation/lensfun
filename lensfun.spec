@@ -63,7 +63,6 @@ libraries for developing %{name}.
 	-DBUILD_FOR_SSE=OFF -DBUILD_FOR_SSE2=OFF \
 %endif
 	-DBUILD_AUXFUN=ON \
-	-DINSTALL_HELPER_SCRIPTS:BOOL=OFF \
 	-DBUILD_TESTS:BOOL=OFF
 
 %make all
