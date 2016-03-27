@@ -56,20 +56,14 @@ libraries for developing %{name}.
 
 %cmake \
 	-DBUILD_DOC:BOOL=ON \
-    -DCMAKE_BUILD_TYPE:STRING=Release \
-%ifarch %armx
-	-BUILD_FOR_SSE2=OFF \
-	-BUILD_FOR_SSE=OFF \
-%endif
-%ifarch %{i586} x86_64
-	-DBUILD_FOR_SSE:BOOL=ON \
-    -DBUILD_FOR_SSE2:BOOL=OFF \
-%endif
+	-DCMAKE_BUILD_TYPE:STRING=Release \
 %ifarch x86_64
-	-DBUILD_FOR_SSE:BOOL=ON \
-	-DBUILD_FOR_SSE2:BOOL=ON \
+	-DBUILD_FOR_SSE=ON -DBUILD_FOR_SSE2=ON \
+%else
+	-DBUILD_FOR_SSE=OFF -DBUILD_FOR_SSE2=OFF \
 %endif
 	-DBUILD_AUXFUN=ON \
+	-DINSTALL_HELPER_SCRIPTS:BOOL=OFF \
 	-DBUILD_TESTS:BOOL=OFF
 
 %make all
