@@ -5,7 +5,7 @@
 Summary:	A library to rectifying the defects introduced by your photographic equipment
 Name:		lensfun
 Version:	0.3.1
-Release:	5
+Release:	6
 License:	GPLv3
 Group:		System/Libraries
 Url:		http://lensfun.sourceforge.net/
