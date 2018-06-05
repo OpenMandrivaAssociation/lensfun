@@ -49,10 +49,10 @@ libraries for developing %{name}.
 %build
 # failed with clang
 # need investigation
-%ifarch %ix86
-#export CC=gcc
-#export CXX=g++
-%endif
+#%%ifarch %ix86
+export CC=gcc
+export CXX=g++
+#%%endif
 
 %cmake \
 	-DBUILD_DOC:BOOL=ON \
