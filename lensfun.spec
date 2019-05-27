@@ -4,8 +4,8 @@
 
 Summary:	A library to rectifying the defects introduced by your photographic equipment
 Name:		lensfun
-Version:	0.3.1
-Release:	7
+Version:	0.3.2
+Release:	1
 License:	GPLv3
 Group:		System/Libraries
 Url:		http://lensfun.sourceforge.net/
@@ -43,8 +43,7 @@ This package contains the header files and .so
 libraries for developing %{name}.
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 %build
 # failed with clang
@@ -57,7 +56,7 @@ export CXX=g++
 %cmake \
 	-DBUILD_DOC:BOOL=ON \
 	-DCMAKE_BUILD_TYPE:STRING=Release \
-%ifarch x86_64
+%ifarch %{x86_64}
 	-DBUILD_FOR_SSE=ON -DBUILD_FOR_SSE2=ON \
 %else
 	-DBUILD_FOR_SSE=OFF -DBUILD_FOR_SSE2=OFF \
@@ -65,7 +64,7 @@ export CXX=g++
 	-DBUILD_AUXFUN=ON \
 	-DBUILD_TESTS:BOOL=OFF
 
-%make all
+%make_build all
 
 %install
 mkdir -p %{buildroot}/%{_datadir}/doc/%{name}
