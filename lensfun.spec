@@ -4,13 +4,12 @@
 
 Summary:	A library to rectifying the defects introduced by your photographic equipment
 Name:		lensfun
-Version:	0.3.2
+Version:	0.3.95
 Release:	1
 License:	GPLv3
 Group:		System/Libraries
-Url:		http://lensfun.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/project/%{name}/%{version}/%{name}-%{version}.tar.gz
-Patch0:		man-path-0.3.0.patch
+Url:		https://github.com/lensfun/lensfun/
+Source0:	https://github.com/lensfun/lensfun/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:	cmake
 BuildRequires:	doxygen
@@ -49,8 +48,8 @@ libraries for developing %{name}.
 # failed with clang
 # need investigation
 #%%ifarch %ix86
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 #%%endif
 
 %cmake \
@@ -77,10 +76,13 @@ cp -r  docs/*.txt %{buildroot}%{_datadir}/doc/%{name}/
 %{_bindir}/g-lensfun-update-data
 %{_bindir}/lensfun-add-adapter
 %{_bindir}/lensfun-update-data
+%{_bindir}/lensfun-convert-lcp
 %{_mandir}/man1/*.*
+%{python_sitelib}/lensfun*
 
 %files -n %{libname}
 %{_libdir}/liblensfun.so.%{major}*
+%{_libdir}/liblensfun.so.2
 
 %files -n %{devname}
 %{_includedir}/%{name}/*.h*
