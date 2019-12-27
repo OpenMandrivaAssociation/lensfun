@@ -76,10 +76,13 @@ cp -r  docs/*.txt %{buildroot}%{_datadir}/doc/%{name}/
 %{_bindir}/g-lensfun-update-data
 %{_bindir}/lensfun-add-adapter
 %{_bindir}/lensfun-update-data
+%{_bindir}/lensfun-convert-lcp
 %{_mandir}/man1/*.*
+%{python_sitelib}/lensfun*
 
 %files -n %{libname}
 %{_libdir}/liblensfun.so.%{major}*
+%{_libdir}/liblensfun.so.2
 
 %files -n %{devname}
 %{_includedir}/%{name}/*.h*
