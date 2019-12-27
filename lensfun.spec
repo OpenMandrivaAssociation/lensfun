@@ -4,12 +4,12 @@
 
 Summary:	A library to rectifying the defects introduced by your photographic equipment
 Name:		lensfun
-Version:	0.3.2
+Version:	0.3.95
 Release:	1
 License:	GPLv3
 Group:		System/Libraries
-Url:		http://lensfun.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/project/%{name}/%{version}/%{name}-%{version}.tar.gz
+Url:		https://github.com/lensfun/lensfun/
+Source0:	https://github.com/lensfun/lensfun/archive/%{version}/%{name}-%{version}.tar.gz
 Patch0:		man-path-0.3.0.patch
 
 BuildRequires:	cmake
@@ -49,8 +49,8 @@ libraries for developing %{name}.
 # failed with clang
 # need investigation
 #%%ifarch %ix86
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 #%%endif
 
 %cmake \
