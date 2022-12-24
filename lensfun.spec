@@ -76,7 +76,6 @@ cp -r  docs/*.txt %{buildroot}%{_datadir}/doc/%{name}/
 %{_bindir}/g-lensfun-update-data
 %{_bindir}/lensfun-add-adapter
 %{_bindir}/lensfun-update-data
-%{_bindir}/lensfun-convert-lcp
 %{_mandir}/man1/*.*
 %{python_sitelib}/lensfun*
 
