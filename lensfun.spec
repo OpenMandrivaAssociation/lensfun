@@ -45,12 +45,13 @@ libraries for developing %{name}.
 %autosetup -p1
 
 %build
-# failed with clang
-# need investigation
-#%%ifarch %ix86
+# As of 0.3.3 and Clang 15 no longer compile due error:
+#/builddir/build/BUILD/lensfun-0.3.3/libs/lensfun/cpuid.cpp:95:18: 
+#error: invalid suffix on literal; C++11 requires a space between literal and identifier [-Wreserved-user-defined-literal]
+# So swtch for now to GCC as workaround
 export CC=gcc
 export CXX=g++
-#%%endif
+
 
 %cmake \
 	-DBUILD_DOC:BOOL=ON \
@@ -81,7 +82,7 @@ cp -r  docs/*.txt %{buildroot}%{_datadir}/doc/%{name}/
 
 %files -n %{libname}
 %{_libdir}/liblensfun.so.%{major}*
-%{_libdir}/liblensfun.so.2
+%{_libdir}/liblensfun.so.1
 
 %files -n %{devname}
 %{_includedir}/%{name}/*.h*
