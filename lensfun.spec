@@ -48,8 +48,8 @@ libraries for developing %{name}.
 # failed with clang
 # need investigation
 #%%ifarch %ix86
-#export CC=gcc
-#export CXX=g++
+export CC=gcc
+export CXX=g++
 #%%endif
 
 %cmake \
