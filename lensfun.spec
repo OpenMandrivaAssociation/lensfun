@@ -5,11 +5,12 @@
 Summary:	A library to rectifying the defects introduced by your photographic equipment
 Name:		lensfun
 Version:	0.3.3
-Release:	1
+Release:	2
 License:	GPLv3
 Group:		System/Libraries
 Url:		https://github.com/lensfun/lensfun/
 Source0:	https://github.com/lensfun/lensfun/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:		lensfun-0.3.3-c++20.patch
 
 BuildRequires:	cmake
 BuildRequires:	doxygen
@@ -45,14 +46,6 @@ libraries for developing %{name}.
 %autosetup -p1
 
 %build
-# As of 0.3.3 and Clang 15 no longer compile due error:
-#/builddir/build/BUILD/lensfun-0.3.3/libs/lensfun/cpuid.cpp:95:18: 
-#error: invalid suffix on literal; C++11 requires a space between literal and identifier [-Wreserved-user-defined-literal]
-# So swtch for now to GCC as workaround
-export CC=gcc
-export CXX=g++
-
-
 %cmake \
 	-DBUILD_DOC:BOOL=ON \
 	-DCMAKE_BUILD_TYPE:STRING=Release \
