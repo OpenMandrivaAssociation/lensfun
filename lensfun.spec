@@ -10,7 +10,6 @@ License:	GPLv3
 Group:		System/Libraries
 Url:		https://github.com/lensfun/lensfun/
 Source0:	https://github.com/lensfun/lensfun/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:		lensfun-0.3.3-c++20.patch
 
 BuildRequires:	cmake
 BuildRequires:	doxygen
